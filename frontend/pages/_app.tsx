@@ -1,20 +1,31 @@
 import React from "react";
 import { AppProps } from "next/app";
-import Head from "next/head";
+import { Layout } from "../src/components/layout";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+`;
+
+const theme = {
+    colors: {
+        primary: "#0070f3",
+    },
+};
 
 export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     return (
         <>
-            <Head>
-                <link
-                    rel="stylesheet"
-                    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-                    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-                    crossOrigin="anonymous"
-                />
-            </Head>
-
-            <Component {...pageProps} />
+            <GlobalStyle />
+            <ThemeProvider theme={theme}>
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
+            </ThemeProvider>
         </>
     );
 }
