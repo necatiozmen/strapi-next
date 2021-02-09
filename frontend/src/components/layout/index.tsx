@@ -1,36 +1,15 @@
-import Head from "next/head";
-import Link from "next/link";
-
 import { Container, Nav, NavItem } from "reactstrap";
+import Link from "next/link";
+import { Header } from "./styled";
 
 type Props = {
     children: React.ReactElement;
 };
 
 export const Layout: React.FC<Props> = ({ children }) => {
-    const title = "Welcome to Nextjs";
     return (
         <div>
-            <Head>
-                <title>{title}</title>
-                <meta charSet="utf-8" />
-                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                <link
-                    rel="stylesheet"
-                    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-                    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-                    crossOrigin="anonymous"
-                />
-                <script src="https://js.stripe.com/v3" />
-            </Head>
-            <header>
-                <style jsx>
-                    {`
-                        a {
-                            color: white;
-                        }
-                    `}
-                </style>
+            <Header>
                 <Nav className="navbar navbar-dark bg-dark">
                     <NavItem>
                         <Link href="/">
@@ -50,7 +29,7 @@ export const Layout: React.FC<Props> = ({ children }) => {
                         </Link>
                     </NavItem>
                 </Nav>
-            </header>
+            </Header>
             <Container>{children}</Container>
         </div>
     );
